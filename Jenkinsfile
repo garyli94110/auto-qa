@@ -3,7 +3,7 @@ pipeline {
   stages{
     stage("build harmony") {
       steps {
-        def data = readFile "builddata"
+        data=readFile('./builddata')
         echo "${data}"
         retry(3) {
             build(
