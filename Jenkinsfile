@@ -9,7 +9,7 @@ pipeline {
         }
         retry(3) {
             build(
-                    job: "Build_Worker",
+              job: "Build_Worker ${data}",
                     parameters: [
                             [$class: 'StringParameterValue', name: 'AppType', value: 'CS'],
                             [$class: 'StringParameterValue', name: 'QAEnv', value: 'e2e']
