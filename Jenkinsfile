@@ -3,8 +3,10 @@ pipeline {
   stages{
     stage("build harmony") {
       steps {
+        script {
         data=readFile('./builddata')
         echo "${data}"
+        }
         retry(3) {
             build(
                     job: "Build_Worker",
