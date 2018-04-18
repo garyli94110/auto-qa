@@ -3,7 +3,15 @@ pipeline {
   stages{
     stage("build harmony") {
       steps {
-        build(
+        retry(3) {
+            build(
+                    job: "Build_Worker",
+                    parameters: [
+                            [$class: 'StringParameterValue', name: 'AppType', value: 'CS'],
+                            [$class: 'StringParameterValue', name: 'QAEnv', value: 'e2e']
+                    ]
+            )
+        }
       }
     }
   }
